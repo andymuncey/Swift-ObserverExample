@@ -8,14 +8,19 @@
 import Foundation
 
 
-enum Result {
-    case first
-    case upperSecond
-    case lowerSecond
-    case third
-    case fail
+class Student : ResultsPublicationObserver {
+    func update(notice: String) {
+        print("\(name): \"I'm going to check my results")
+    }
+    
+    init (name: String) {
+        self.name = name
+    }
+    
+    var name: String
+    
+    
 }
-
 
 protocol ResultsPublicationObserver : AnyObject { //must be an object (not a struct)
     func update(notice: String)
@@ -53,21 +58,6 @@ class RegistryServices {
     
 }
 
-
-
-class Student : ResultsPublicationObserver {
-    func update(notice: String) {
-        print("\(name): \"I'm going to check my results")
-    }
-    
-    init (name: String) {
-        self.name = name
-    }
-    
-    var name: String
-    
-    
-}
 
 
 
